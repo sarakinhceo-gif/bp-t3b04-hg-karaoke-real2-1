@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (2/3) · t3b04-hg-karaoke-real2-1</title>
+  <meta name="description" content="t3b04-hg-karaoke-real2-1에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://hwagok-song-room.link-hub.org/posts-2.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ :root {
+ --bg-color: #1a0826;
+ --grid-color: #3b105c;
+ --neon-purple: #bd00ff;
+ --neon-orange: #ff5e00;
+ --text-color: #e0d5eb;
+ --title-color: #ffffff;
+ --card-color: #2b0f40;
+ }
+ body {
+ background-color: var(--bg-color);
+ background-image: linear-gradient(0deg, transparent 24%, rgba(189, 0, 255, 0.05) 25%, rgba(189, 0, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(189, 0, 255, 0.05) 75%, rgba(189, 0, 255, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(189, 0, 255, 0.05) 25%, rgba(189, 0, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(189, 0, 255, 0.05) 75%, rgba(189, 0, 255, 0.05) 76%, transparent 77%, transparent);
+ background-size: 50px 50px;
+ color: var(--text-color);
+ font-family: 'Courier New', Courier, monospace, 'Segoe UI', sans-serif;
+ margin: 0;
+ padding: 0;
+ line-height: 1.7;
+ }
+ header {
+ border-bottom: 3px dashed var(--neon-orange);
+ padding: 50px 20px;
+ text-align: center;
+ background: linear-gradient(180deg, #1a0826 0%, #2b0f40 100%);
+ box-shadow: 0 5px 20px rgba(189, 0, 255, 0.4);
+ }
+ header h1 {
+ color: var(--title-color);
+ font-size: 3rem;
+ margin: 0;
+ text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-orange);
+ letter-spacing: 3px;
+ }
+ header p {
+ font-size: 1.1rem;
+ color: var(--neon-orange);
+ margin: 10px 0 0 0;
+ text-transform: uppercase;
+ letter-spacing: 4px;
+ font-weight: bold;
+ }
+ .container {
+ max-width: 1000px;
+ margin: 40px auto;
+ padding: 0 20px;
+ }
+ .intro-box {
+ background-color: var(--card-color);
+ border: 2px solid var(--neon-orange);
+ border-radius: 12px;
+ padding: 30px;
+ margin-bottom: 40px;
+ box-shadow: 0 0 20px rgba(255, 94, 0, 0.2);
+ }
+ .intro-box h2 {
+ color: var(--neon-orange);
+ margin-top: 0;
+ font-size: 1.8rem;
+ text-shadow: 0 0 5px var(--neon-orange);
+ border-bottom: 1px solid var(--neon-orange);
+ padding-bottom: 10px;
+ }
+ .spec-table {
+ width: 100%;
+ border-collapse: collapse;
+ margin: 25px 0;
+ background-color: #1a0826;
+ }
+ .spec-table th, .spec-table td {
+ border: 1px solid var(--neon-purple);
+ padding: 12px;
+ text-align: left;
+ }
+ .spec-table th {
+ background-color: rgba(189, 0, 255, 0.2);
+ color: var(--neon-purple);
+ }
+ .spec-table td {
+ color: #fff;
+ }
+ .post-list {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 20px;
+ margin-bottom: 40px;
+ }
+ @media(max-width: 768px) {
+ .post-list {
+ grid-template-columns: 1fr;
+ }
+ }
+ .post-card {
+ background-color: var(--card-color);
+ border: 1px solid var(--neon-purple);
+ border-radius: 8px;
+ padding: 20px;
+ transition: all 0.3s ease;
+ }
+ .post-card:hover {
+ border-color: var(--neon-orange);
+ transform: translateY(-5px) scale(1.02);
+ box-shadow: 0 5px 15px rgba(255, 94, 0, 0.3);
+ }
+ .post-card h3 {
+ margin-top: 0;
+ color: var(--title-color);
+ }
+ .post-card h3 a {
+ color: var(--title-color);
+ text-decoration: none;
+ transition: color 0.3s;
+ }
+ .post-card h3 a:hover {
+ color: var(--neon-orange);
+ }
+ .post-card p {
+ font-size: 0.9rem;
+ color: #d0c0d8;
+ }
+ .story-section {
+ background-color: rgba(43, 15, 64, 0.8);
+ border-right: 5px solid var(--neon-purple);
+ padding: 30px;
+ margin-bottom: 40px;
+ border-radius: 8px 0 0 8px;
+ border: 1px solid var(--neon-purple);
+ }
+ .story-section h2 {
+ color: var(--neon-purple);
+ margin-top: 0;
+ text-shadow: 0 0 8px var(--neon-purple);
+ }
+ .review-section {
+ margin-bottom: 40px;
+ }
+ .review-section h2 {
+ color: var(--neon-orange);
+ text-shadow: 0 0 5px var(--neon-orange);
+ border-bottom: 1px solid var(--neon-purple);
+ padding-bottom: 10px;
+ }
+ .review-card {
+ background-color: var(--card-color);
+ border-radius: 8px;
+ padding: 20px;
+ margin-bottom: 20px;
+ border-left: 4px solid var(--neon-orange);
+ }
+ .review-card .meta {
+ font-size: 0.85rem;
+ color: var(--neon-purple);
+ margin-bottom: 10px;
+ font-weight: bold;
+ }
+ .review-card p {
+ margin: 0;
+ font-style: italic;
+ }
+ .cta-section {
+ background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-orange) 100%);
+ border-radius: 12px;
+ padding: 35px;
+ text-align: center;
+ box-shadow: 0 0 25px rgba(189, 0, 255, 0.4);
+ }
+ .cta-section h2 {
+ margin-top: 0;
+ color: #fff;
+ font-size: 2.2rem;
+ text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+ }
+ .cta-section p {
+ color: #fff;
+ font-size: 1.1rem;
+ text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+ }
+ .btn-call {
+ display: inline-block;
+ background-color: #1a0826;
+ color: var(--neon-orange);
+ border: 2px solid var(--neon-orange);
+ padding: 15px 35px;
+ font-size: 1.3rem;
+ font-weight: bold;
+ text-decoration: none;
+ border-radius: 50px;
+ margin-top: 20px;
+ transition: all 0.3s;
+ box-shadow: 0 0 10px var(--neon-orange);
+ }
+ .btn-call:hover {
+ background-color: var(--neon-orange);
+ color: #1a0826;
+ box-shadow: 0 0 20px var(--neon-orange), 0 0 40px var(--neon-purple);
+ transform: scale(1.05);
+ }
+ footer {
+ text-align: center;
+ padding: 40px 20px;
+ border-top: 1px solid var(--neon-purple);
+ color: #88749a;
+ font-size: 0.85rem;
+ }
+ </style>
+  <meta property="og:title" content="글 목록 (2/3) · t3b04-hg-karaoke-real2-1">
+  <meta property="og:description" content="t3b04-hg-karaoke-real2-1에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://hwagok-song-room.link-hub.org/posts-2.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header>
+ <h1>HG SYNTH KARAOKE</h1>
+ <p>Retro 80s Grid & Real Karaoke Registry</p>
+</header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 44개 · 2/3 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0408.html">화곡 가라오케 찐후기 확인을 위한 마포 홍대 단체 가라오케 예약 가이드 합정 가라오케 정보</a>
+        <p class="post-item__summary">화곡 가라오케 찐후기를 찾아보며 즐거운 모임을 계획 중인 분들을 위해 몇 가지 핵심 체크리스트를 제안합니다. 특히 마포와 홍대 일대는 교통의 요지인 만큼 접근성과 위치 파악이 무엇보다 중요합니다. </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0485.html">화곡 가라오케 찐후기 활용하여 망원 노래방 추천정보 확인하는 절차</a>
+        <p class="post-item__summary">많은 이들이 화곡 가라오케 찐후기 내용을 참고하여 인근 지역의 서비스를 탐색하곤 합니다. 하지만 온라인상의 정보는 주관적인 요소가 강하므로 이를 객관적인 지표로 치환하는 작업이 필요합니다. 올바른 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0486.html">화곡 가라오케 찐후기 기반의 홍대 노래방 추천정보 가격 비교 가이드</a>
+        <p class="post-item__summary">화곡 가라오케 찐후기 같은 온라인 게시물은 종종 가격에 대한 막연한 기대를 심어주곤 합니다. 합리적인 소비를 위해서는 단순히 저렴한 곳을 찾는 것이 아니라, 가격 책정 기준이 투명한지 확인하는 태도</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0487.html">화곡 가라오케 찐후기 보고 예약할 때 흔히 하는 실수와 공덕 셔츠룸 추천정보</a>
+        <p class="post-item__summary">화곡 가라오케 찐후기 정보를 맹신하여 급하게 예약을 시도하다 보면 생각보다 많은 사람이 실수에 직면합니다. 가장 흔한 오류는 업체의 실제 운영 시간과 현재 예약 가능 여부를 확인하지 않고 무작정 방</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0488.html">화곡 가라오케 찐후기 체크리스트로 본 연남 유흥 추천정보와 접근성 분석</a>
+        <p class="post-item__summary">화곡 가라오케 찐후기 내용을 검토할 때 유용하게 활용했던 체크리스트를 연남 지역의 업장 선택에도 적용해 볼 수 있습니다. 좋은 장소를 선택하는 기준은 단순히 내부의 화려함보다는 방문하기 편한 접근성</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0489.html">화곡 가라오케 찐후기 기반의 성공적인 마곡 가라오케 추천정보 분석</a>
+        <p class="post-item__summary">처음 방문하는 마곡 지역에서 적절한 장소를 찾지 못해 당황했던 기억이 누구나 한 번쯤 있을 것입니다. 특히 화곡 가라오케 찐후기 내용을 읽고 마곡 지역을 방문하려는 분들은 업종의 미묘한 차이를 파악</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0490.html">화곡 가라오케 찐후기 검증을 통한 마곡 유흥 추천정보와 시간대 선택</a>
+        <p class="post-item__summary">유흥은 단순히 밤늦게 시작한다는 편견을 버려야 진정한 즐거움을 찾을 수 있습니다. 화곡 가라오케 찐후기 내용을 분석하다 보면 많은 이들이 시간대별 변화를 간과하고 무작정 밤늦게 방문한다는 점을 알 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0491.html">화곡 가라오케 찐후기 분석으로 본 합정 노래방 추천정보와 인원 전략</a>
+        <p class="post-item__summary">좋은 공간은 적절한 환경, 합리적인 비용, 그리고 만족스러운 인원 구성이라는 세 가지 요소를 충족해야 합니다. 화곡 가라오케 찐후기에서 강조되는 부분들도 결국 이 세 가지 범주를 벗어나지 않는 경우</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0492.html">화곡 가라오케 찐후기 비교를 통한 연남 클럽 추천정보 선택 기준</a>
+        <p class="post-item__summary">당신은 어젯밤 방문한 장소에서 정말로 만족스러운 시간을 보냈다고 확신할 수 있습니까? 화곡 가라오케 찐후기 사례를 접한 뒤 비슷한 기대를 안고 연남 지역을 찾았을 때, 막상 원하는 분위기와 달라서 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0493.html">화곡 가라오케 찐후기 확인하고 합정 셔츠룸 추천정보 파악하기</a>
+        <p class="post-item__summary">온라인상에 떠도는 화곡 가라오케 찐후기 정보는 때때로 주관적인 견해가 과하게 섞여 있어 옥석을 가려내는 과정이 반드시 필요합니다. 많은 이용자가 홍보성 게시글과 실질적인 후기를 구분하지 못해 낭패를</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0494.html">화곡 가라오케 찐후기 비교로 보는 공덕 가라오케 추천정보 판단기준</a>
+        <p class="post-item__summary">소비자가 화곡 가라오케 찐후기 내용을 접할 때 가장 혼란스러운 지점은 바로 가격 체계의 불투명성입니다. 많은 이들이 단순히 가격이 저렴한 곳을 선택하려 하지만 이는 종종 서비스 품질 저하로 이어지는</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260722-0495.html">화곡 가라오케 찐후기 실수를 피하는 상수 마사지 추천정보 예약법</a>
+        <p class="post-item__summary">화곡 가라오케 찐후기 사례를 분석해보면 대다수 이용자가 실패를 겪는 지점은 바로 정보의 불일치에서 기인합니다. 마사지 업소를 찾을 때도 마찬가지로 사전에 명확한 절차를 확인하지 않으면 당황스러운 상</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/guide-001-1dqpst8.html">단골 손님의 시선으로 본 가라오케 원가 계산 – 금액을 통제하는 힘</a>
+        <p class="post-item__summary">백링크 지시: 본문 내러티브 속에서 다음 링크를 자연스러운 발견으로 녹여라: 구글 봇 정밀 검진 및 크롤 버짓 밀착 간호</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/guide-003.html">형님, 화곡 물 좀 제대로 빼봤습니다. 찐후기.</a>
+        <p class="post-item__summary">아, 참. 진짜 별거 아니라고 생각했는데, 말이야. 내가 이번에 큰맘 먹고 좀 놀아보려고 했거든? 근데 세상에, 뭐 하나 제대로 하는 게 없어. 이걸 어떻게 해야 하나 싶어서 결국 손 뻗었지, 이 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/guide-004.html">NSA 프리즘 감시망을 뚫는 레트로 가라오케 룸의 음향학적 원리</a>
+        <p class="post-item__summary">어이 브로들, 형이 푼 NSA 에드워드 스노든의 프리즘(PRISM) 비밀 회동 썰을 듣고 &quot;에이 거짓말 아니야?&quot;라고 생각한 문과 겜돌이 브로들이 꽤 있을 거 같아. 그래서 오늘 형이 음향학적, 정</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-1.html">화곡 가라오케 찐후기</a>
+        <p class="post-item__summary">화곡 지역에서 가라오케를 찾고 계신 분들을 위해 관련 정보를 정리해 드립니다. 노래방은 약속이나 모임, 개인 여가 시간 등 다양한 목적으로 방문하는 장소이며, 사전에 정보 없이 방문하기보다는 충분한</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/juice-2.html">화곡 가라오케 찐후기 정보 안내</a>
+        <p class="post-item__summary">화곡 지역에는 다양한 노래방과 찐후기를 찾아보는 사람들이 많습니다. 가라오케를 찾는 이유는 단순히 노래를 부르는 것 외에도 취미 생활이나 모임을 위한 공간으로 활용되기 때문입니다. 이와 관련해 유흥</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-1.html">화곡 가라오케 찐후기 정보 안내</a>
+        <p class="post-item__summary">화곡 지역에서 가라오케를 찾기 위해 다양한 후기를 검색하는 분들이 많습니다. 단순히 노래방 목록을 나열하는 것을 넘어, 실제 방문한 이용자들을 통해 얻은 생생한 정보는 선택에 중요한 기준이 됩니다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-2.html">화곡 가라오케 찐후기 정보</a>
+        <p class="post-item__summary">화곡 지역에는 노래방이 많으며, 이용자들은 주로 노래방을 통해 여가 시간을 보냅니다. 노래방 선택 시에는 주변 환경과 시설 상태가 중요하게 고려되며, 방문 전 미리 정보를 확인하는 것이 일반적입니다</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-3.html">화곡 가라오케 찐후기 및 관련 정보 안내</a>
+        <p class="post-item__summary">화곡 지역에서 가라오케를 즐기는 많은 사람들은 노래방 선택 시 음질, 실내 환경, 그리고 편의 시설의 원활한 운영 여부를 중점적으로 고려합니다. 이러한 요건들은 단순한 여가 활동을 넘어, 방문객이 </p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <a class="pager__link" href="posts.html">1</a>
+      <span class="pager__current">2</span>
+      <a class="pager__link" href="posts-3.html">3</a>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
